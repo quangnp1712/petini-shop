@@ -1,0 +1,149 @@
+<section class="page">
+  <div class="login container  h-100 py-4">
+    <div class="login-row row mt-3 ">
+      <div class="login-col col-12 col-md-10 col-lg-9 col-xl-8">
+        <div class="login-card card rounded  border-0">
+          <div class="login-card-body card-body text-center">
+            <div class="login-icon">
+              <a routerLink="/Home"><img src="/assets/images/logo.png"> </a>
+            </div>
+            <div class="login-text">
+              <h2>Register | Petini</h2>
+            </div>
+            <form (ngSubmit)="register()">
+              <div class="row">
+                <div class="col-12 col-md-6">
+                  <div class="login-input">
+                     <!-- Username -->
+                <div class="username">
+                  <mat-form-field class="input-username w-100" appearance="outline">
+                    <mat-label>Username</mat-label>
+                    <input matInput type="text" required="Please Enter Username" [formControl]="usernameFormControl"
+                      [errorStateMatcher]="matcher" name="txtUsername">
+                    <mat-icon matPrefix><i class="fa-solid fa-user"></i></mat-icon>
+                    <mat-error *ngIf="usernameFormControl.hasError('required')">
+                      Username is <strong>required</strong>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="password">
+                  <mat-form-field class="input-password w-100" appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input matInput type="password" name="txtPassword" [formControl]="passwordFormControl"
+                      formControlName="control" [errorStateMatcher]="matcher" required="Please Enter Password"
+                      [type]="hidePassword ? 'password' : 'text'">
+                    <mat-icon matPrefix><i class="fa-solid fa-key"></i></mat-icon>
+                    <button type="button" class="border-0 bg-body " mat-icon-button matSuffix (click)="hidePassword = !hidePassword"
+                      [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
+                      <mat-icon matSuffix>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                    <mat-error *ngIf="passwordFormControl.hasError('required')">
+                      Password is <strong>required</strong>
+                    </mat-error>
+
+                  </mat-form-field>
+                </div>
+
+                <!-- Phone number -->
+                <div class="username">
+                  <mat-form-field class="input-username w-100" appearance="outline">
+                    <mat-label>Phone</mat-label>
+                    <input matInput pattern="^[0]\d{9,12}$" type="tel" [formControl]="phoneFormControl"
+                      [errorStateMatcher]="matcher" name="txtPhone">
+                    <mat-icon matPrefix><i class="fa-solid fa-phone"></i></mat-icon>
+                    <mat-error *ngIf="phoneFormControl.hasError('required')">
+                      Phone is <strong>required</strong>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+
+                  </div>
+                </div>
+                <div class="col-12 col-md-6">
+                  <div class="login-input">
+                     <!-- Email -->
+                <div class="username">
+                  <mat-form-field class="input-username w-100" appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput type="email" ngModel email required="Please Enter Username"
+                      [formControl]="emailFormControl" [errorStateMatcher]="matcher" name="txtEmail">
+                    <mat-icon matPrefix><i class="fa-regular fa-envelope"></i></mat-icon>
+                    <mat-error [innerHTML]="getEmailErrorMessage()" *ngIf="emailFormControl.invalid">
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+
+                <!-- Confirm Pass -->
+                <div class="password">
+                  <mat-form-field class="input-password w-100" appearance="outline">
+                    <mat-label>Confirm Password</mat-label>
+                    <input matInput type="password" name="txtConfirmPassword"
+                      [formControl]="confirmPasswordFormControl" [errorStateMatcher]="matcher"
+                      [type]="hideConfirmPass ? 'password' : 'text'">
+                    <mat-icon matPrefix><i class="fa-solid fa-key"></i></mat-icon>
+                    <button type="button" class="border-0 bg-body " mat-icon-button matSuffix (click)="hideConfirmPass = !hideConfirmPass"
+                      [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideConfirmPass">
+                      <mat-icon matSuffix>{{hideConfirmPass ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+
+                    <mat-error *ngIf="confirmPasswordFormControl.hasError('required')">
+                      Password Confirm is <strong>required</strong>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+
+                  <!-- Day of Birth  -->
+                  <div class="username">
+                    <mat-form-field class="input-username w-100" appearance="outline">
+                      <mat-label>Day of Birth</mat-label>
+                      <input matInput [formControl]="dobFormControl" [errorStateMatcher]="matcher" name="txtDob"
+                        id="date" [matDatepicker]="picker" [min]="minDate" [max]="maxDate">
+                      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-datepicker #picker></mat-datepicker>
+                      <mat-icon matPrefix><i class="fa-solid fa-calendar-days"></i></mat-icon>
+                      <mat-error *ngIf="dobFormControl.hasError('required')">
+                        Day of Birth is <strong>required</strong>
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="login-input">
+
+
+                <!-- Address -->
+                <div class="username">
+                  <mat-form-field class="input-username w-100" appearance="outline">
+                    <mat-label>Address</mat-label>
+                    <input matInput type="text" [formControl]="addressFormControl" [errorStateMatcher]="matcher"
+                      name="txtAddress">
+                    <mat-icon matPrefix><i class="fa-solid fa-map-location-dot"></i></mat-icon>
+                    <mat-error *ngIf="addressFormControl.hasError('required')">
+                      Address is <strong>required</strong>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+
+
+
+              </div>
+              <div class="text-center pt-1  pb-1 login-button-div">
+                <button class="login-button btn btn-primary btn-block w-100 fa-lg gradient-custom-2 mb-3"
+                  mat-raised-button type="submit">
+                  Register</button>
+              </div>
+            </form>
+
+            <hr class="my-4">
+            <span><a routerLink="/Login">Having an account</a> </span>
+            <!--<button class="gmail-button btn btn-lg btn-block btn-primary w-100 " style="background-color: #dd4b39;"
+            mat-raised-button><i class="fab fa-google me-2"></i> Sign in with Google</button> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

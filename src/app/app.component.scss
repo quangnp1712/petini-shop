@@ -1,0 +1,47 @@
+.gradient-custom-2 {
+  /* fallback for old browsers */
+  background: rgb(238, 42, 123) 0%;
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, rgb(238, 42, 123) 0%, rgb(255, 125, 184) 100%);
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, rgb(238, 42, 123) 0%, rgb(255, 125, 184) 100%);
+}
+
+.gradient-text-1{
+  background: rgb(238, 42, 123) 0%;
+  background: linear-gradient(to right, rgb(238, 42, 123) 0%, rgb(255, 125, 184) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.btn-register {
+  color: white !important;
+  font-weight: 500;
+}
+
+.li-login {
+
+  border-radius: 5px;
+  width: fit-content;
+
+  button {
+    color: rgb(1, 148, 243);
+    font-family: MuseoSans, Roboto, sans-serif !important;
+    font-size: 20px;
+    letter-spacing: 0.7px;
+    font-weight: 500;
+
+  }
+}
+
+.logo {
+  width: 80px;
+}
+
+.logo-text {
+  letter-spacing: 7px;
+  font-weight: 500;
+
+}

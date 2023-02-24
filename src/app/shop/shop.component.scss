@@ -1,0 +1,28 @@
+.shop{
+  min-height: calc(100vh - 78px - 430px) !important;
+  .shop-content{
+    .content-title{
+      img{
+        height: 38px;
+      }
+    }
+  }
+
+}
+
+.item-img {
+  min-height: 290px;
+  max-height: 290px;
+  width: 100%;
+}
+
+.item-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  max-height: 48px;
+  min-height: 48px;
+  justify-content: center;
+}
